@@ -2,18 +2,12 @@ package com.mobydigital.apirest.entity;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 
 @Entity
-@Table(name="candidato")
-public class Candidato {
-
+@Table(name="listado_candidatos")
+public class ListadoCandidatos {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idcandidato")
@@ -31,11 +25,20 @@ public class Candidato {
 	@Column(name="numdoc")
 	private int numDoc;
 	
-	@Column(name="fechanac")
+	@Column(name="fecha_nacimiento")
 	private Date fechaNac;
-
 	
-//	Getters and Setters
+	@Column(name="tecnologia")
+	private String tecnologia;
+	
+	@Column(name="version")
+	private String version;
+		
+	
+	@Column(name="experiencia")
+	private int experiencia;
+	
+	// Getters and Setters
 
 	public int getId() {
 		return id;
@@ -84,18 +87,29 @@ public class Candidato {
 	public void setFechaNac(Date fechaNac) {
 		this.fechaNac = fechaNac;
 	}
-	
-	// Metodo to string
 
-	@Override
-	public String toString() {
-		return "Candidato [id= " + id + ", Nombre Completo = " + nombre + " " + apellido 
-				+ ", tipo de documento = " + tipoDoc + " numero = " 
-				+ numDoc + ", Fecha de nacimiento = " + fechaNac;
+	public String getTecnologia() {
+		return tecnologia;
 	}
-	
-	
-	
-	
-	
+
+	public void setTecnologia(String tecnologia) {
+		this.tecnologia = tecnologia;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	public int getExperiencia() {
+		return experiencia;
+	}
+
+	public void setExperiencia(int experiencia) {
+		this.experiencia = experiencia;
+	}
+
 }

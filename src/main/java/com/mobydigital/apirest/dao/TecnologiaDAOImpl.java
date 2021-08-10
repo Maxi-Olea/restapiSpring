@@ -10,34 +10,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mobydigital.apirest.entity.Candidato;
+import com.mobydigital.apirest.entity.Tecnologia;
 
 @Repository
-public class CandidatoDAOImpl implements CandidatoDAO {
+public class TecnologiaDAOImpl implements TecnologiaDAO {
 	
 	@Autowired
 	private EntityManager entityManager;
 
 	@Override
-	public List<Candidato> findAll() {
+	public List<Tecnologia> findAll() {
 		Session currentSession = entityManager.unwrap(Session.class);		
-		Query<Candidato> theQuery = currentSession.createQuery("from Candidato", Candidato.class);		
-		List<Candidato> personas = theQuery.getResultList();
-		return personas;
+		Query<Tecnologia> theQuery = currentSession.createQuery("from Tecnologia", Tecnologia.class);		
+		List<Tecnologia> tecnologia = theQuery.getResultList();
+		return tecnologia;
 	}
 
 	@Override
-	public Candidato findById(int id) {
+	public Tecnologia findById(int id) {
 		Session currentSession = entityManager.unwrap(Session.class);		
-		Candidato persona = currentSession.get(Candidato.class, id);
-		return persona;
+		Tecnologia tecnologia = currentSession.get(Tecnologia.class, id);
+		return tecnologia;
 	}
 
 	@Override
 	@Transactional
-	public void save(Candidato persona) {
+	public void save(Tecnologia tecnologia) {
 		Session currentSession = entityManager.unwrap(Session.class);
-		currentSession.saveOrUpdate(persona);
+		currentSession.saveOrUpdate(tecnologia);
 		
 	}
 
@@ -45,9 +45,9 @@ public class CandidatoDAOImpl implements CandidatoDAO {
 	@Transactional
 	public void deleteById(int id) {
 		Session currentSession = entityManager.unwrap(Session.class);
-		Query<Candidato> theQuery = currentSession.createQuery("delete from Candidato where id=:idCandidato");
+		Query<Tecnologia> theQuery = currentSession.createQuery("delete from Tecnologia where id=:idTecnologia");
 		
-		theQuery.setParameter("idCandidato", id);
+		theQuery.setParameter("idTecnologia", id);
 		theQuery.executeUpdate();
 		
 	}

@@ -9,6 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	
+	//Desabilito el csrf en Sprig Security para poder hacer POST/PUT/DELETE desde postman
+	//Lo ideal sería configurar un token en el header para validar
 	@Override
     protected void configure(HttpSecurity http) throws Exception {    
         http
