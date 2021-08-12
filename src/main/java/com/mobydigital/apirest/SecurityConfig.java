@@ -14,9 +14,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	//Lo ideal sería configurar un token en el header para validar
 	@Override
     protected void configure(HttpSecurity http) throws Exception {    
-        http
-            .csrf().disable()
-            .authorizeRequests()
-                .anyRequest().permitAll();
+//        http
+//            .csrf().disable()
+//            .authorizeRequests()
+//            .anyRequest().permitAll();
+		http
+			.csrf().disable()
+			.formLogin().disable()
+			.logout().disable()
+			.httpBasic();
         }
 }
